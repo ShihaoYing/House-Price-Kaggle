@@ -20,4 +20,4 @@ def load_data():
     return train, test
 
 
-load()
+load_data()
