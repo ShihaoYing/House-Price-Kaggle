@@ -1,23 +1,22 @@
-import os
-import warnings
-warnings.filterwarnings('ignore')
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set(style='darkgrid', palette='muted')
-from scipy import stats
-from scipy.stats import norm
-from scipy.stats import skew
 
 
-def load_data():
-    train = pd.read_csv('./house-prices-advanced-regression-techniques/train.csv')
-    test = pd.read_csv('./house-prices-advanced-regression-techniques/test.csv')
-    
-    print(train.head())
-    print(test.head())
-    return train, test
+train = pd.read_csv('./house-prices-advanced-regression-techniques/train.csv')
+test = pd.read_csv('./house-prices-advanced-regression-techniques/test.csv')   
 
+# print(train.head())
+# print(test.head())
 
-load_data()
+def sale_distribution():
+    sns.displot(train['SalePrice'])
+    plt.show()
+
+# print(train['SalePrice'].describe())
+# print("偏度: %f" % train['SalePrice'].skew())
+# print("峰度: %f" % train['SalePrice'].kurt())
+
+data = train.corr()
+print(data['SalePrice'].sort_values())
